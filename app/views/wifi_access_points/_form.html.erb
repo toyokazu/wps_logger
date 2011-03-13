@@ -55,17 +55,18 @@
     <%= f.label :mac %><br />
     <%= f.text_field :mac %>
   </div>
+  <%- ml = @wifi_access_point.manual_location -%>
   <div class="field">
     <table id="position_params">
       <tr>
         <td>x:</td>
-        <td><%= text_field_tag('manual_location[x]', ml.x, :size => 5) %></td>
+        <td><%= text_field_tag('manual_location[x]', ml.nil? ? nil : ml.x, :size => 5) %></td>
         <td>y:</td>
-        <td><%= text_field_tag('manual_location[y]', ml.y, :size => 5) %></td>
+        <td><%= text_field_tag('manual_location[y]', ml.nil? ? nil : ml.y, :size => 5) %></td>
       </tr>
       <tr>
         <td>height:</td>
-        <td><%= text_field_tag('manual_location[height]', ml.height, :size => 5) %></td>
+        <td><%= text_field_tag('manual_location[height]', ml.nil? ? nil : ml.height, :size => 5) %></td>
         <td></td>
         <td></td>
       </tr>
