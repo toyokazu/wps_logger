@@ -8,9 +8,9 @@ class WifiAccessPointsController < ApplicationController
       @map = Map.find(params["map_id"])
     end
     if @map.nil?
-      @wifi_access_points = WifiAccessPoint.all
+      @wifi_access_points = WifiAccessPoint.order("mac").all
     else
-      @wifi_access_points = WifiAccessPoint.where('manual_locations.map_id = ?', params["map_id"]).all(:include => [:manual_location])
+      @wifi_access_points = WifiAccessPoint.where('manual_locations.map_id = ?', params["map_id"]).order("mac").all(:include => [:manual_location])
     end
 
     respond_to do |format|
