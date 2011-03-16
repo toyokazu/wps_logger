@@ -82,9 +82,18 @@ class WifiAccessPointsController < ApplicationController
     end
 
     respond_to do |format|
-      if @wifi_access_point.save && @manual_location.save
-        format.html { redirect_to(@wifi_access_point, :notice => 'WifiAccessPoint was successfully updated.') }
-        format.xml  { head :ok }
+      if @wifi_access_point.save
+        #FIXME
+        if @manual_location.nil?
+          format.html { redirect_to(@wifi_access_point, :notice => 'WifiAccessPoint was successfully updated.') }
+          format.xml  { head :ok }
+        elsif @manual_location.save
+          format.html { redirect_to(@wifi_access_point, :notice => 'WifiAccessPoint was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @wifi_access_point.errors, :status => :unprocessable_entity }
+        end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @wifi_access_point.errors, :status => :unprocessable_entity }
