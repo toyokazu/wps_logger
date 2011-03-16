@@ -212,7 +212,12 @@ div#message {
 }
 
 /* wifi_logs/index */
+/* wifi_access_points/index */
 div#wifi_logs {
+  float: left;
+}
+
+div#wifi_access_points {
   float: left;
 }
 
