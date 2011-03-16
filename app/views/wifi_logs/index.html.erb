@@ -33,6 +33,7 @@
 <table>
   <tr>
     <th>WifiAccessPoint</th>
+    <th colspan="2">Devise</th>
     <th colspan="4">Location</th>
     <th>Signal</th>
     <th colspan="2">Operation</th>
@@ -40,6 +41,8 @@
 <%- @wifi_logs.each do |wifi_log| -%>
   <tr>
     <td><%= wifi_log.wifi_access_point.mac %></td>
+    <td><%= wifi_log.movement_log.user.email %></td>
+    <td><%= wifi_log.movement_log.user_agent %></td>
     <td><%= wifi_log.movement_log.manual_location.x %></td>
     <td><%= wifi_log.movement_log.manual_location.y %></td>
     <td><%= wifi_log.movement_log.manual_location.height %></td>
