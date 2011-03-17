@@ -28,7 +28,7 @@
 </script>
 <canvas id="canvas" width="500" height="300"></canvas>
 <%- end -%>
-<%- if !@map.nil? && !@wifi_access_point.nil? -%>
+<%- if !@map.nil? && (!@wifi_access_point.nil? || !@movement_log.nil?) -%>
 <div id="wifi_logs">
 <p id="notice"><%= notice %></p>
 
@@ -57,6 +57,13 @@
 </p>
 </div>
 <%- end -%>
-<div id="back_link">
+
+<div class="clear">
+<%- if @map.nil? -%>
+<%= link_to 'Back', maps_path %>
+<%- elsif !@map.nil? && !@wifi_access_point.nil? -%>
 <%= link_to 'Back', map_wifi_access_point_wifi_logs_path(:map_id => @map.id, :wifi_access_point_id => @wifi_access_point.id) %>
+<%- elsif !@map.nil? && !@movement_log.nil? %>
+<%= link_to 'Back', map_movement_log_wifi_logs_path(:map_id => @map.id, :movement_log_id => @movement_log.id) %>
+<%- end -%>
 </div>

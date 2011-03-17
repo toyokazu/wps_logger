@@ -37,6 +37,7 @@ a:hover {
   border-top: none;
   padding: 25px;
   width: 1056px;
+  /* width: 800px; */
 }
 
 #sidebar {
@@ -225,10 +226,12 @@ div#wifi_access_points {
   float: left;
 }
 
-div#back_link {
-  clear: both;
+/* movement_logs/index */
+div#movement_logs {
+  float: left;
 }
 
+/* layouts/application */
 div.clear {
   clear: both;
 }
